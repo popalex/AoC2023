@@ -68,7 +68,10 @@
            
       *    DISPLAY 'After Perform=' NumberFound
            IF NumberFound = 'Y'
-                 COMPUTE FullNumber = (FirstNumber * 10) + LastNumber
+                COMPUTE FullNumber = (FirstNumber * 10) + LastNumber
+                 IF LastNumber = ZEROES 
+                   COMPUTE FullNumber = (FirstNumber * 10) + FirstNumber
+                 END-IF
                  DISPLAY 'First Number: ' FirstNumber
                  DISPLAY 'Last Number: ' LastNumber
                  DISPLAY 'Full Number: ' FullNumber
