@@ -4,22 +4,20 @@ from os.path import expanduser
 
 home = expanduser("~")
 
-file = open(f'{home}/inputday2.txt', 'r')
+# encoding='cp1047' needed of z/OS
+file = open(f'{home}/inputday2.txt', 'r',encoding='cp1047')
 sumOfGames = 0
 
 games = []
 maxCubes = { 'red': 12, 'green': 13 , 'blue': 14}
 cubes = ['red','green','blue']
 
-
 for line in file:
-    #replace Game 
     if (line.startswith("Game ")):
         line = line.replace('Game ','')
     currentGameNumber = int(line[0:line.find(':')])
     currentGame = {}
 
-    # line is the line after : char
     line = line[line.find(':') + 1:]
     print(f"Current Game {currentGameNumber}, line: {line.strip()}")
     
