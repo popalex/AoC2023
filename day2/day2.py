@@ -1,11 +1,18 @@
+import platform
 import re
 from os.path import expanduser
 
 
 home = expanduser("~")
 
+if platform.system() == 'OS/390':
+    encoding='cp1047'
+    print("Running on z/OS!")
+else:
+    encoding='UTF-8'
+
 # encoding='cp1047' needed of z/OS
-file = open(f'{home}/inputday2.txt', 'r',encoding='cp1047')
+file = open(f'{home}/inputday2.txt', 'r', encoding=encoding)
 sumOfGames = 0
 
 games = []
